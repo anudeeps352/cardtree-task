@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-You can either visit the app on the hosted link - 
+You can either visit the app on the hosted link - [Demo](https://cardtree-task.vercel.app/)
 
 OR
 
