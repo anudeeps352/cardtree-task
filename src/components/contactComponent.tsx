@@ -1,14 +1,23 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Image from 'next/image';
-import Progress from '@/components/ui/progress';
-import Frame from '../../../public/Frame 1.png';
-import HomeForm from '../../components/homeForm';
-import Logo from '../../../public/Cardtree.png';
+'use client';
 
-type AboutPageProps = {
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import Image from 'next/image';
+import Logo from '../../public/Cardtree.png';
+import Progress from '@/components/ui/progress';
+import Frame from '../../public/Frame 1.png';
+import ContactForm from './contactForm';
+
+type ContactComponentProps = {
   onNext: () => void;
 };
-export default function AboutPage({ onNext }: AboutPageProps) {
+
+export function ContactComponent({ onNext }: ContactComponentProps) {
   return (
     <div className="min-h-dvh grid grid-cols-1 md:grid-cols-2 gap-4">
       <main className="flex flex-col bg-white rounded-tr-4xl rounded-br-4xl shadow-xl items-center gap-8 md:12 w-full pt-4 pb-8">
@@ -22,15 +31,18 @@ export default function AboutPage({ onNext }: AboutPageProps) {
             priority
           />
         </div>
-        <Progress currentStep={0} />
-        <Card className="border-none shadow-none max-w-lg w-full">
+        <Progress currentStep={1} />
+        <Card className="border-none shadow-none max-w-2xl w-full">
           <CardHeader>
             <CardTitle className="text-[clamp(1.5rem,2.5vw,2rem)]">
-              Bio hero details
+              How can your audience connect with you?
             </CardTitle>
+            <CardDescription className="text-black">
+              You can customize the details later.
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <HomeForm onNext={onNext} />
+            <ContactForm onNext={onNext} />
           </CardContent>
         </Card>
       </main>
@@ -40,7 +52,7 @@ export default function AboutPage({ onNext }: AboutPageProps) {
             src={Frame}
             width={0}
             height={0}
-            alt="Frame"
+            alt="logo"
             className="w-[80%] h-auto object-contain mx-auto"
             priority
           />
