@@ -3,12 +3,15 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormFields, Schema } from '@/lib/validation/contactSchema';
-import { useRouter } from 'next/navigation';
+
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 
-export default function ContactForm() {
-  const router = useRouter();
+type ContactFormProps = {
+  onNext: () => void;
+};
+
+export default function ContactForm({ onNext }: ContactFormProps) {
   const [mounted, setMounted] = useState(false);
   const {
     register,
@@ -26,7 +29,7 @@ export default function ContactForm() {
 
   const onSubmit = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    router.push('/templates');
+    onNext();
   };
 
   return (

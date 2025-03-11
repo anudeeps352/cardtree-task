@@ -1,23 +1,24 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Arrow from '../../../public/arrow.svg';
+
 const steps = [
-  { id: 1, text: 'Around', path: '/' },
-  { id: 2, text: 'Contact Info', path: '/contact' },
-  { id: 3, text: 'Template + AI', path: '/templates' },
+  { id: 0, text: 'About' },
+  { id: 1, text: 'Contact Info' },
+  { id: 2, text: 'Template + AI' },
 ];
 
-export default function Progress() {
-  const currentPath = usePathname();
-  const currentStepId =
-    steps.find((step) => step.path === currentPath)?.id || 1;
+type ProgressProps = {
+  currentStep: number;
+};
+
+export default function Progress({ currentStep }: ProgressProps) {
   return (
     <div className="flex items-center gap-4 w-full max-w-md justify-center py-4">
       {steps.map((step, index) => {
-        const isCompleted = step.id <= currentStepId;
+        const isCompleted = step.id <= currentStep;
         return (
           <div key={step.id} className="flex gap-4 items-center">
             <div className="flex flex-col items-center">
@@ -29,13 +30,9 @@ export default function Progress() {
                     : 'bg-gray-300 border-gray-300'
                 )}
               >
-                {step.id}
+                {step.id + 1}
               </div>
-              <span
-                className={clsx(
-                  'mt-2 text-sm font-medium transition-all text-gray-500'
-                )}
-              >
+              <span className="mt-2 text-sm font-medium transition-all text-gray-500">
                 {step.text.includes('AI') ? (
                   <>
                     {step.text.replace('AI', '')}
@@ -49,7 +46,7 @@ export default function Progress() {
               </span>
             </div>
             {index < steps.length - 1 && (
-              <div className=" flex justify-center">
+              <div className="flex justify-center">
                 <Image
                   src={Arrow}
                   alt="Progress Arrow"

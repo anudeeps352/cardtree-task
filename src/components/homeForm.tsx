@@ -3,14 +3,17 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormFields, Schema } from '@/lib/validation/aboutSchema';
-import { useRouter } from 'next/navigation';
+
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Glass from '../../public/glass.svg';
 
-export default function HomeForm() {
-  const router = useRouter();
+type HomeFormProps = {
+  onNext: () => void;
+};
+
+export default function HomeForm({ onNext }: HomeFormProps) {
   const [mounted, setMounted] = useState(false);
   const {
     register,
@@ -28,7 +31,7 @@ export default function HomeForm() {
 
   const onSubmit = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    router.push('/contact');
+    onNext();
   };
 
   return (

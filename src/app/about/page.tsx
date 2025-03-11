@@ -1,21 +1,14 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
-import Logo from '../../../public/Cardtree.png';
 import Progress from '@/components/ui/progress';
 import Frame from '../../../public/Frame 1.png';
-import ContactForm from '../../components/contactForm';
+import HomeForm from '../../components/homeForm';
+import Logo from '../../../public/Cardtree.png';
 
-type ContactPageProps = {
+type AboutPageProps = {
   onNext: () => void;
 };
-
-export default function ContactPage({ onNext }: ContactPageProps) {
+export default function AboutPage({ onNext }: AboutPageProps) {
   return (
     <div className="min-h-dvh grid grid-cols-1 md:grid-cols-2 gap-4">
       <main className="flex flex-col bg-white rounded-tr-4xl rounded-br-4xl shadow-xl items-center gap-8 md:12 w-full pt-4 pb-8">
@@ -29,18 +22,15 @@ export default function ContactPage({ onNext }: ContactPageProps) {
             priority
           />
         </div>
-        <Progress currentStep={1} />
-        <Card className="border-none shadow-none max-w-2xl w-full">
+        <Progress currentStep={0} />
+        <Card className="border-none shadow-none max-w-lg w-full">
           <CardHeader>
             <CardTitle className="text-[clamp(1.5rem,2.5vw,2rem)]">
-              How can your audience connect with you?
+              Bio hero details
             </CardTitle>
-            <CardDescription className="text-black">
-              You can customize the details later.
-            </CardDescription>
           </CardHeader>
           <CardContent>
-            <ContactForm onNext={onNext} />
+            <HomeForm onNext={onNext} />
           </CardContent>
         </Card>
       </main>
@@ -50,7 +40,7 @@ export default function ContactPage({ onNext }: ContactPageProps) {
             src={Frame}
             width={0}
             height={0}
-            alt="logo"
+            alt="Frame"
             className="w-[80%] h-auto object-contain mx-auto"
             priority
           />
